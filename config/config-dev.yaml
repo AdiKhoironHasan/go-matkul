@@ -1,0 +1,27 @@
+appName: matkul
+
+server:
+  port: "9091"
+  log_level: 3
+
+db:
+  host: 127.0.0.1
+  port: 5432
+  dbname: postgres
+  user: eronman
+  password: eronman
+
+integrations:
+  http_dial_timeout_seconds: 5
+  http_request_timeout_seconds: 10
+  externals:
+    http:
+      icanhazdadjoke:
+        host: "https://icanhazdadjoke.com"
+        endpoints:
+          random: "/"
+          byId: "/j/%s"
+      mahasiswaserv:
+        host: "http://localhost:9000"
+        endpoints:
+          getDosenByID: "/api/v1/latihan/dosen-alamat?id_dosen=%d"
