@@ -43,6 +43,10 @@ func (h *HttpHandler) Ping(c echo.Context) error {
 func (h *HttpHandler) SaveMatkul(c echo.Context) error {
 	postDTO := dto.MatkulReqDTO{}
 
+	postDTO.Authorization = c.Request().Header.Get("Authorization")
+	postDTO.DateTime = c.Request().Header.Get("datetime")
+	postDTO.Signature = c.Request().Header.Get("signature")
+
 	if err := c.Bind(&postDTO); err != nil {
 		log.Error(err.Error())
 		return c.NoContent(http.StatusBadRequest)
